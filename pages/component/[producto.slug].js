@@ -2,10 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-import {
-  obtenerProductoPagina,
-  productoCross,
-} from "../../utils/wooCommerceApi";
+import { obtenerProductoPagina } from "../../utils/wooCommerceApi";
 // import Navbar from "../../components/Layout/Navbar";
 // import Footer from "../../components/Layout/Footer";
 import prueba from "../../public/default.png";

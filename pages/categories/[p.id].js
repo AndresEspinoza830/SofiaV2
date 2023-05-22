@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
 import Head from "next/head";
-import {
-  fetchWooCommerceProducts,
-  obtenerProductosCategoria,
-} from "../../utils/wooCommerceApi";
+import { obtenerProductosCategoria } from "../../utils/wooCommerceApi";
 import prueba from "../../public/default.png";
 import Image from "next/image";
 
 const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
   const [navResponsive, setNavResponsive] = useState(false);
 
-  const router = useRouter();
+  // const router = useRouter();
 
   //categorias
   // products = products.filter((p) => p.name !== "Uncategorized");
@@ -119,7 +115,7 @@ const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
                   {producto.description || (
                     <p>
                       Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Quae, quasi!{" "}
+                      Quae, quasi!
                     </p>
                   )}
                 </p>
