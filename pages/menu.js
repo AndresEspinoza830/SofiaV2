@@ -8,9 +8,8 @@ import { fetchWooCommerceProducts } from "../utils/wooCommerceApi";
 import prueba from "../public/default.png";
 import Image from "next/image";
 
-const Menu = ({ products, carrito, eliminarProducto, pedido }) => {
-  products = products.filter((p) => p.name !== "Uncategorized");
-  console.log(products);
+const Menu = ({ data, carrito, eliminarProducto, pedido }) => {
+  data = data.filter((p) => p.name !== "Uncategorized");
 
   const slides = [
     {
@@ -30,8 +29,6 @@ const Menu = ({ products, carrito, eliminarProducto, pedido }) => {
       url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80",
     },
   ];
-
-  console.log(prueba);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -88,7 +85,7 @@ const Menu = ({ products, carrito, eliminarProducto, pedido }) => {
           Nuestros Productos
         </h2>
         <div className="flex flex-wrap -mx-1 lg:-mx-4w-full">
-          {products.map((pro) => (
+          {data.map((pro) => (
             <div
               key={pro.id}
               className="my-1 w-full px-2 md:w-1/2 md:flex lg:my-4 md:px-2 lg:px-4 lg:w-1/3  flex flex-col justify-between rounded-md"
@@ -114,21 +111,16 @@ const Menu = ({ products, carrito, eliminarProducto, pedido }) => {
   );
 };
 
-export default Menu;
-export async function getStaticProps() {
+Menu.getInitialProps = async (context) => {
   const wooCommerceProducts = await fetchWooCommerceProducts().catch((error) =>
     console.error(error)
   );
-
-  if (!wooCommerceProducts) {
-    return {
-      notFound: true,
-    };
-  }
+  console.log(context);
+  const data = wooCommerceProducts.data;
 
   return {
-    props: {
-      products: wooCommerceProducts.data,
-    },
+    data,
   };
-}
+};
+
+export default Menu;

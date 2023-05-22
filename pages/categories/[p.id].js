@@ -10,18 +10,16 @@ import {
 import prueba from "../../public/default.png";
 import Image from "next/image";
 
-const Name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
+const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
   const [navResponsive, setNavResponsive] = useState(false);
 
   const router = useRouter();
 
   //categorias
-  products = products.filter((p) => p.name !== "Uncategorized");
-  console.log(products);
+  // products = products.filter((p) => p.name !== "Uncategorized");
+  // console.log(products);
   //productos
-  productos.map(
-    (p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, ""))
-  );
+  data.map((p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, "")));
 
   //   console.log(productH2);
 
@@ -32,13 +30,13 @@ const Name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
         eliminarProducto={eliminarProducto}
         pedido={pedido}
       /> */}
-      <div className="max-w-[1360px] hidden shadow-xl  mx-auto w-full md:flex text-center items-center mt-14 border-[1px] border-gray-300 py-5 px-1 rounded-lg">
+      {/* <div className="max-w-[1360px] hidden shadow-xl  mx-auto w-full md:flex text-center items-center mt-14 border-[1px] border-gray-300 py-5 px-1 rounded-lg">
         {products.map((p) => (
           <Link key={p.id} className="w-full" href={`/categories/${p.id}`}>
             <h2 className="font-abc text-base font-bold uppercase">{p.name}</h2>
           </Link>
         ))}
-      </div>
+      </div> */}
       {/* Nav Responsive */}
       <button
         id="dropdownDefaultButton"
@@ -59,7 +57,7 @@ const Name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
           <path d="M19 9l-7 7-7-7"></path>
         </svg>
       </button>
-      {navResponsive && (
+      {/* {navResponsive && (
         <div
           id="dropdown"
           className="w-full duration-1000 transition-transform"
@@ -83,7 +81,7 @@ const Name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
             ))}
           </ul>
         </div>
-      )}
+      )} */}
       <div className="container my-12 mx-auto px-4 md:px-12">
         {/* <div className=" -mx-1">
           <h2 className="font-bold text-3xl font-abc uppercase mb-2">
@@ -95,7 +93,7 @@ const Name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
         </div> */}
 
         <div className="flex flex-wrap -mx-1 lg:-mx-4w-full ">
-          {productos.map((producto) => (
+          {data.map((producto) => (
             <div
               key={producto.id}
               className="my-1 w-full md:w-1/2 md:flex lg:my-4 lg:px-4 lg:w-1/3 min-h-[400px] flex flex-col justify-between rounded-lg"
@@ -142,50 +140,43 @@ const Name = ({ productos, carrito, eliminarProducto, products, pedido }) => {
   );
 };
 
-export default Name;
-
-export async function getStaticPaths() {
-  //No recibe la ruta
-  const productosCategoria = await obtenerProductosCategoria(ruta).catch(
-    (error) => console.error(error)
-  );
-
-  const arrProduct = productosCategoria.data;
-
-  const paths = arrProduct.map((p) => {
-    return {
-      params: { id: p.id.toString() },
-    };
-  });
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ query }) {
+Name.getInitialProps = async ({ query }) => {
   const ruta = Object.values(query)[0];
-  console.log(ruta);
-
-  const productosCategoria = await obtenerProductosCategoria(ruta).catch(
-    (error) => console.error(error)
-  );
-
-  const wooCommerceProducts = await fetchWooCommerceProducts().catch((error) =>
+  const Productos = await obtenerProductosCategoria(ruta).catch((error) =>
     console.error(error)
   );
 
-  if (!wooCommerceProducts) {
-    return {
-      notFound: true,
-    };
-  }
+  const data = Productos.data;
 
   return {
-    props: {
-      productos: productosCategoria.data,
-      products: wooCommerceProducts.data,
-    },
+    data,
   };
-}
+};
+
+export default Name;
+
+// export async function getStaticProps({ query }) {
+//   const ruta = Object.values(query)[0];
+//   console.log(ruta);
+
+//   const productosCategoria = await obtenerProductosCategoria(ruta).catch(
+//     (error) => console.error(error)
+//   );
+
+//   const wooCommerceProducts = await fetchWooCommerceProducts().catch((error) =>
+//     console.error(error)
+//   );
+
+//   if (!wooCommerceProducts) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: {
+//       productos: productosCategoria.data,
+//       products: wooCommerceProducts.data,
+//     },
+//   };
+// }
