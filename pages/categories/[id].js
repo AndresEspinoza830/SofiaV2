@@ -15,29 +15,13 @@ const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
 
   const router = useRouter();
 
-  //categorias
-  // products = products.filter((p) => p.name !== "Uncategorized");
-  // console.log(products);
-  //productos
   data.map((p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, "")));
 
-  //   console.log(productH2);
+
 
   return (
     <>
-      {/* <Navbar
-        carrito={carrito}
-        eliminarProducto={eliminarProducto}
-        pedido={pedido}
-      /> */}
-      {/* <div className="max-w-[1360px] hidden shadow-xl  mx-auto w-full md:flex text-center items-center mt-14 border-[1px] border-gray-300 py-5 px-1 rounded-lg">
-        {products.map((p) => (
-          <Link key={p.id} className="w-full" href={`/categories/${p.id}`}>
-            <h2 className="font-abc text-base font-bold uppercase">{p.name}</h2>
-          </Link>
-        ))}
-      </div> */}
-      {/* Nav Responsive */}
+   
       <button
         id="dropdownDefaultButton"
         data-dropdown-toggle="dropdown"
@@ -45,7 +29,7 @@ const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
         type="button"
         onClick={() => setNavResponsive(!navResponsive)}
       >
-        Menu{" "}
+        
         <svg
           className="w-4 h-4 ml-2"
           aria-hidden="true"
@@ -57,40 +41,9 @@ const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
           <path d="M19 9l-7 7-7-7"></path>
         </svg>
       </button>
-      {/* {navResponsive && (
-        <div
-          id="dropdown"
-          className="w-full duration-1000 transition-transform"
-        >
-          <ul
-            className="py-2 px-2 text-sm text-gray-700 dark:text-gray-200 flex flex-col"
-            aria-labelledby="dropdownDefaultButton"
-          >
-            {products.map((p) => (
-              <Link
-                key={p.id}
-                className={`${
-                  router.asPath === `/categories/${p.id}`
-                    ? "bg-[#D9BF73] text-white"
-                    : ""
-                } w-full text-2xl font-abc text-center border-b-2 py-2`}
-                href={`/categories/${p.id}`}
-              >
-                {p.name}
-              </Link>
-            ))}
-          </ul>
-        </div>
-      )} */}
+    
       <div className="container my-12 mx-auto px-4 md:px-12">
-        {/* <div className=" -mx-1">
-          <h2 className="font-bold text-3xl font-abc uppercase mb-2">
-            {productH2[0].name}
-          </h2>
-          <p className="font-abc font-extralight leading-7 text-lg mb-4">
-            {productH2[0].yoast_head_json.og_description}
-          </p>
-        </div> */}
+
 
         <div className="flex flex-wrap -mx-1 lg:-mx-4w-full ">
           {data.map((producto) => (
@@ -135,48 +88,45 @@ const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
           ))}
         </div>
       </div>
-      {/* <Footer /> */}
+    
     </>
   );
 };
 
-Name.getInitialProps = async ({ query }) => {
-  const ruta = Object.values(query)[0];
-  const Productos = await obtenerProductosCategoria(ruta).catch((error) =>
+
+export default Name;
+
+export const getStaticProps = async (context) => {
+  const id = context.params.id;
+
+  const Productos = await obtenerProductosCategoria(id).catch((error) =>
+// 
+
+console.error(error)
+  );
+
+  // Single Object
+  const data  = Productos.data;
+  return {
+    props: {
+            data,
+          },
+  };
+};
+
+
+
+export async function getStaticPaths() {
+ 
+  const Productos = await fetchWooCommerceProducts().catch((error) =>
     console.error(error)
   );
 
   const data = Productos.data;
 
-  return {
-    data,
-  };
-};
+  const paths = data.map((producto) => ({
+    params: { id: producto.id.toString()},
+  }));
 
-export default Name;
-
-// export async function getStaticProps({ query }) {
-//   const ruta = Object.values(query)[0];
-//   console.log(ruta);
-
-//   const productosCategoria = await obtenerProductosCategoria(ruta).catch(
-//     (error) => console.error(error)
-//   );
-
-//   const wooCommerceProducts = await fetchWooCommerceProducts().catch((error) =>
-//     console.error(error)
-//   );
-
-//   if (!wooCommerceProducts) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: {
-//       productos: productosCategoria.data,
-//       products: wooCommerceProducts.data,
-//     },
-//   };
-// }
+  return { paths, fallback: false };
+}
