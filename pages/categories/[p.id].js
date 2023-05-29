@@ -5,8 +5,9 @@ import Head from "next/head";
 import { obtenerProductosCategoria } from "../../utils/wooCommerceApi";
 import prueba from "../../public/default.png";
 import Image from "next/image";
+import Layout from "@/components/Layout/Layout";
 
-const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
+const Name = ({ data, carrito, eliminarProducto, pedido }) => {
   const [navResponsive, setNavResponsive] = useState(false);
 
   // const router = useRouter();
@@ -20,12 +21,11 @@ const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
   //   console.log(productH2);
 
   return (
-    <>
-      {/* <Navbar
-        carrito={carrito}
-        eliminarProducto={eliminarProducto}
-        pedido={pedido}
-      /> */}
+    <Layout
+      carrito={carrito}
+      eliminarProducto={eliminarProducto}
+      pedido={pedido}
+    >
       {/* <div className="max-w-[1360px] hidden shadow-xl  mx-auto w-full md:flex text-center items-center mt-14 border-[1px] border-gray-300 py-5 px-1 rounded-lg">
         {products.map((p) => (
           <Link key={p.id} className="w-full" href={`/categories/${p.id}`}>
@@ -131,25 +131,26 @@ const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
           ))}
         </div>
       </div>
-      {/* <Footer /> */}
-    </>
+    </Layout>
   );
-};
-
-Name.getInitialProps = async ({ query }) => {
-  const ruta = Object.values(query)[0];
-  const Productos = await obtenerProductosCategoria(ruta).catch((error) =>
-    console.error(error)
-  );
-
-  const data = Productos.data;
-
-  return {
-    data,
-  };
 };
 
 export default Name;
+
+export async function getServerSideProps({ query }) {
+  const ruta = Object.values(query)[0];
+  console.log(ruta);
+
+  const productosCategoria = await obtenerProductosCategoria(ruta).catch(
+    (error) => console.error(error)
+  );
+
+  return {
+    props: {
+      data: productosCategoria.data,
+    },
+  };
+}
 
 // export async function getStaticProps({ query }) {
 //   const ruta = Object.values(query)[0];

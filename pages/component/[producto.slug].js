@@ -1,13 +1,12 @@
 import { useState } from "react";
 import Head from "next/head";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { obtenerProductoPagina } from "../../utils/wooCommerceApi";
-// import Navbar from "../../components/Layout/Navbar";
-// import Footer from "../../components/Layout/Footer";
 import prueba from "../../public/default.png";
 import Link from "next/link";
 import Image from "next/image";
+import Layout from "@/components/Layout/Layout";
 
 const Producto = ({
   data,
@@ -69,7 +68,7 @@ const Producto = ({
   };
 
   return (
-    <>
+    <Layout carrito={carrito} eliminarProducto={eliminarProducto}>
       <Head>
         <meta
           property="og:locale"
@@ -121,11 +120,6 @@ const Producto = ({
           content={product?.yoast_head_json?.og_image[0]?.type ?? ""}
         /> */}
       </Head>
-      {/* <Navbar
-        carrito={carrito}
-        eliminarProducto={eliminarProducto}
-        pedido={pedido}
-      /> */}
       <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto">
         <div className="w-full md:mx-2 px-2">
           <div>
@@ -243,23 +237,26 @@ const Producto = ({
         ))} */}
       </div>
 
-      {/* <ToastContainer autoClose={2000} />
-      <Footer /> */}
-    </>
+      <ToastContainer autoClose={2000} />
+    </Layout>
   );
 };
 
-Producto.getInitialProps = async ({ query }) => {
+export default Producto;
+
+export async function getServerSideProps({ query }) {
   const slug = Object.values(query)[0];
+
   const productosWoo = await obtenerProductoPagina(slug).catch((error) =>
     console.error(error)
   );
 
-  const data = productosWoo.data;
-  return { data };
-};
-
-export default Producto;
+  return {
+    props: {
+      data: productosWoo.data,
+    },
+  };
+}
 
 // export async function getServerSideProps({ query }) {
 //   const slug = Object.values(query)[0];
