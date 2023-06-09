@@ -5,8 +5,9 @@ import Head from "next/head";
 import { obtenerProductosCategoria } from "../../utils/wooCommerceApi";
 import prueba from "../../public/default.png";
 import Image from "next/image";
+import Layout from "@/components/Layout/Layout";
 
-const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
+const Name = ({ data, carrito, eliminarProducto, pedido }) => {
   const [navResponsive, setNavResponsive] = useState(false);
 
   // const router = useRouter();
@@ -16,8 +17,24 @@ const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
 
 
   return (
+<<<<<<< HEAD:pages/categories/[id].js
     <>
    
+=======
+    <Layout
+      carrito={carrito}
+      eliminarProducto={eliminarProducto}
+      pedido={pedido}
+    >
+      {/* <div className="max-w-[1360px] hidden shadow-xl  mx-auto w-full md:flex text-center items-center mt-14 border-[1px] border-gray-300 py-5 px-1 rounded-lg">
+        {products.map((p) => (
+          <Link key={p.id} className="w-full" href={`/categories/${p.id}`}>
+            <h2 className="font-abc text-base font-bold uppercase">{p.name}</h2>
+          </Link>
+        ))}
+      </div> */}
+      {/* Nav Responsive */}
+>>>>>>> d0342254d9a1dc690f40395e9be63a59c14eae19:pages/categories/[p.id].js
       <button
         id="dropdownDefaultButton"
         data-dropdown-toggle="dropdown"
@@ -84,6 +101,7 @@ const Name = ({ data, carrito, eliminarProducto, products, pedido }) => {
           ))}
         </div>
       </div>
+<<<<<<< HEAD:pages/categories/[id].js
     
     </>
   );
@@ -94,6 +112,21 @@ export default Name;
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
+=======
+    </Layout>
+  );
+};
+
+export default Name;
+
+export async function getServerSideProps({ query }) {
+  const ruta = Object.values(query)[0];
+  console.log(ruta);
+
+  const productosCategoria = await obtenerProductosCategoria(ruta).catch(
+    (error) => console.error(error)
+  );
+>>>>>>> d0342254d9a1dc690f40395e9be63a59c14eae19:pages/categories/[p.id].js
 
   const Productos = await obtenerProductosCategoria(id).catch((error) =>
 // 
@@ -105,11 +138,18 @@ console.error(error)
   const data  = Productos.data;
   return {
     props: {
+<<<<<<< HEAD:pages/categories/[id].js
             data,
           },
   };
 };
 
+=======
+      data: productosCategoria.data,
+    },
+  };
+}
+>>>>>>> d0342254d9a1dc690f40395e9be63a59c14eae19:pages/categories/[p.id].js
 
 
 export async function getStaticPaths() {
