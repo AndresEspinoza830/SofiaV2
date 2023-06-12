@@ -39,7 +39,9 @@ export default function Home({ carrito, eliminarProducto, pedido }) {
           <h2 className="font-extrabold text-7xl mb-1 tracking-widest mt-0 font-abc">
             Experience the food
           </h2>
-          <h1 className="font-philo text-xl mb-6">Mas de una decada contigo</h1>
+          <h1 className="font-philo text-xl mb-6">
+            More than a decade with you
+          </h1>
         </div>
       </div>
 
@@ -48,9 +50,7 @@ export default function Home({ carrito, eliminarProducto, pedido }) {
           <h2 className="font-extrabold text-5xl mb-1 tracking-widest mt-0 font-abc text-[#052617]">
             Sofia Restaurant
           </h2>
-          <h3 className="font-extrabold text-2xl mb-1 tracking-widest mt-0 font-philo">
-            restaurante
-          </h3>
+          <h3 className="font-extrabold text-2xl mb-1 tracking-widest mt-0 font-philo"></h3>
           <p className="md:px-7 mb-8 font-light text-lg">
             Welcome to Sofia Restaurant! We provide our customers with authentic
             Hispanic cuisines like parilla, pescados y mariscos, sandwiches, and

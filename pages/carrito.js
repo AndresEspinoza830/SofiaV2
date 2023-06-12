@@ -39,10 +39,10 @@ const Carrito = ({
             <thead>
               <tr>
                 <th className="text-start">Dish</th>
-                <th>Producto</th>
-                <th className="hidden md:block">Cantidad</th>
-                <th>Precio</th>
-                <th>Eliminar</th>
+                <th>Product</th>
+                <th className="hidden md:block">Quantity</th>
+                <th>Price</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -111,11 +111,12 @@ const Carrito = ({
           </table>
 
           <div className="mt-5 md:mt-0 md:w-1/4 border-[1px] px-4 py-4 rounded-md">
-            <h2 className="text-md mb-4">RESUMEN DEL PEDIDO</h2>
+            <h2 className="text-md mb-4">Order Summary</h2>
             <p className=" font-bold py-1">Subtotal: ${total}</p>
-            <p className=" font-bold py-1">Descuento: -0.00</p>
+            <p className=" font-bold py-1">Discount: -0.00</p>
+            <p className=" font-bold py-1">Delivery: $4.99</p>
             <p className="mb-4 font-bold border-y-[1px] py-4">
-              Total a pagar: ${total}
+              Total a pagar:${total + 5}
             </p>
             <Link
               href="/checkout"

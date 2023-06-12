@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../public/sofia.png";
@@ -16,8 +16,15 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
     setHamburguer(!hamburguer);
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      var header = document.querySelector("header");
+      header.classList.toggle("abajo", window.scrollY > 0);
+    });
+  }, []);
+
   return (
-    <div className="">
+    <header id="header" className="header">
       <div
         className={`${
           cart ? "translate-x-0" : "translate-x-full"
@@ -68,15 +75,15 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
             </svg>
           </div>
           {carrito.length === 0 ? (
-            <p className="text-center">No hay productos en el carrito</p>
+            <p className="text-center">There are no products in the cart</p>
           ) : (
             <>
               <table className="w-full mb-4 z-50">
                 <thead>
                   <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
                   </tr>
                 </thead>
                 <tbody className="">
@@ -154,7 +161,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
 
       <div className="bg-black w-full py-4 px-2 md:px-0">
         <h3 className="font-extrabold text-xl  border-white text-white uppercase text-center">
-          Atencion en New Jersey *
+          Attention in New Jersey *
         </h3>
         <h3 className="font-extrabold text-xl  border-white text-white uppercase text-center">
           Delivery: Mon - Sun: 11:00 AM - 9:45 PM
@@ -174,7 +181,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
                 </Link>
               </li>
               <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                <Link className="font-abc text-2xl" href="/contact">
+                <Link className="font-abc text-2xl" href="/about">
                   About us{" "}
                 </Link>
               </li>
@@ -184,7 +191,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
                 </Link>
               </li>
               <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                <Link className="font-abc text-2xl" href="/menu">
+                <Link className="font-abc text-2xl" href="/contact">
                   Contact us
                 </Link>
               </li>
@@ -216,9 +223,8 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
             </svg>
             {/* </Link> */}
             <button className="border-2 hidden md:block font-abc font-philo text-lg border-black bg-transparent hover:border-[#D9BF73] hover:text-[#D9BF73] rounded-sm py-2 px-6 duration-300">
-              Mis Ordenes
+              My Orders
             </button>
-
             <svg
               width="40px"
               height="40px"
@@ -333,7 +339,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
           hamburguer ? "translate-x-0" : "translate-x-full"
         } ease-in-out duration-300 fixed left-0 top-0`}
       ></div>
-    </div>
+    </header>
   );
 };
 

@@ -99,26 +99,46 @@ const Producto = ({
           "
           content={product?.yoast_head_json?.og_article_modified_time ?? ""}
         />
-        {/* <meta
+        <meta
           property="og:image
           "
-          content={product?.yoast_head_json?.og_image[0]?.url ?? ""}
+          content={
+            product?.yoast_head_json?.og_image &&
+            Array.isArray(product.yoast_head_json.og_image)
+              ? product.yoast_head_json.og_image[0]?.url
+              : ""
+          }
         />
         <meta
           property="og:image:width
           "
-          content={product?.yoast_head_json?.og_image[0]?.width ?? ""}
+          content={
+            product?.yoast_head_json?.og_image &&
+            Array.isArray(product.yoast_head_json.og_image)
+              ? product.yoast_head_json.og_image[0]?.width
+              : ""
+          }
         />
         <meta
           property="og:image:height
           "
-          content={product?.yoast_head_json?.og_image[0]?.height ?? ""}
+          content={
+            product?.yoast_head_json?.og_image &&
+            Array.isArray(product.yoast_head_json.og_image)
+              ? product.yoast_head_json.og_image[0]?.height
+              : ""
+          }
         />
         <meta
           property="og:image:type
           "
-          content={product?.yoast_head_json?.og_image[0]?.type ?? ""}
-        /> */}
+          content={
+            product?.yoast_head_json?.og_image &&
+            Array.isArray(product.yoast_head_json.og_image)
+              ? product.yoast_head_json.og_image[0]?.type
+              : ""
+          }
+        />
       </Head>
       <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto">
         <div className="w-full md:mx-2 px-2">
@@ -142,10 +162,10 @@ const Producto = ({
               {product.name}
             </h2>
           </div>
-          <div className="flex flex-col-reverse md:flex-row w-full">
-            <form className="w-full md:w-3/5 mr-2" onSubmit={handleCarrito}>
+          <div className="flex flex-col-reverse items-center md:flex-row w-full">
+            <form className="w-full md:w-3/5 mr-2 p-3" onSubmit={handleCarrito}>
               <h3 className="font-philo font-bold text-xl mb-2">Description</h3>
-              <p className="font-philo text-xl text-[#555555] mb-5">
+              <p className="font-philo text-xl text-[#555555] mb-5 mt-1">
                 {product.description}
               </p>
               <div className="flex items-center mb-5">
@@ -179,12 +199,6 @@ const Producto = ({
                   id="mensaje"
                   className="bg-transparent border border-gray-500 h-[100px] outline-offset-0 rounded-lg text-black px-8 py-3 focus:outline-none"
                 />
-                {/* <label
-                  htmlFor="mensaje"
-                  className="font-philo font-light text-sm"
-                >
-                  Máximo 30 caracteres
-                </label> */}
               </div>
               <h3 className="font-philo font-extrabold text-4xl mb-8 text-[#052617]">
                 ${product.price}
@@ -200,7 +214,7 @@ const Producto = ({
                 alt="Placeholder"
                 width={600}
                 height={500}
-                className=""
+                className="p-3"
                 src={product?.images[0]?.src ?? prueba.src}
               ></Image>
             </div>

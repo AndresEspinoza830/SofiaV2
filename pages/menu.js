@@ -76,13 +76,13 @@ const Menu = ({ data, carrito, eliminarProducto }) => {
       </div>
       <div className="max-w-[1400px] mx-auto px-4 md:px-2">
         <h2 className="font-abc font-extrabold uppercase my-6 text-2xl">
-          Nuestros Productos
+          Our Products
         </h2>
         <div className="flex flex-wrap -mx-1 lg:-mx-4w-full">
           {data.map((p) => (
             <div
               key={p.id}
-              className="my-1 w-full px-2 md:w-1/2 md:flex lg:my-4 md:px-2 lg:px-4 lg:w-1/3  flex flex-col justify-between rounded-md"
+              className="my-1 w-full mb-4 md:mb-0 px-2 md:w-1/2 md:flex lg:my-4 md:px-2 lg:px-4 lg:w-1/3  flex flex-col justify-between rounded-md"
             >
               <h2 className="font-abc text-3xl font-semibold mb-2">{p.name}</h2>
               <Link href={`/categories/${p.id}`} className="overflow-hidden">

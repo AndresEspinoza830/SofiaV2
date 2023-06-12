@@ -20,7 +20,7 @@ export async function fetchWooCommerceProducts() {
 
 export async function obtenerProductosCategoria(category) {
   try {
-    const response = await api.get(`products?category=${category}&per_page=12`);
+    const response = await api.get(`products?category=${category}&per_page=40`);
     return response;
   } catch (error) {
     throw new Error(error);

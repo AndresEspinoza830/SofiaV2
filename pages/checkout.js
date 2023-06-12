@@ -450,7 +450,7 @@ const Checkout = ({
                         >
                           <div className="w-full flex space-x-6">
                             <div className="w-full">
-                              <label className="font-check">Nombre</label>
+                              <label className="font-check">Name</label>
                               <input
                                 type="text"
                                 className="w-full bg-[#f2f2f2] p-2"
@@ -468,7 +468,7 @@ const Checkout = ({
                             </div>
                             <div className="w-full">
                               <label htmlFor="apellido" className="font-check">
-                                Apellido
+                                Last Name
                               </label>
                               <input
                                 type="text"
@@ -489,7 +489,7 @@ const Checkout = ({
                           </div>
                           <div>
                             <label htmlFor="email" className="font-check">
-                              Correo
+                              Email
                             </label>
                             <input
                               type="email"
@@ -581,7 +581,7 @@ const Checkout = ({
                         >
                           <div className="w-full flex space-x-6">
                             <div className="w-full">
-                              <label className="font-check">Nombre</label>
+                              <label className="font-check">Name</label>
                               <input
                                 type="text"
                                 className="w-full bg-[#f2f2f2] p-2"
@@ -599,7 +599,7 @@ const Checkout = ({
                             </div>
                             <div className="w-full">
                               <label htmlFor="apellido" className="font-check">
-                                Apellido
+                                Last Name
                               </label>
                               <input
                                 type="text"
@@ -620,7 +620,7 @@ const Checkout = ({
                           </div>
                           <div>
                             <label htmlFor="email" className="font-check">
-                              Correo
+                              Email
                             </label>
                             <input
                               type="email"
@@ -640,7 +640,7 @@ const Checkout = ({
                           </div>
                           <div>
                             <label htmlFor="telefono" className="font-check">
-                              Telefono
+                              Phone
                             </label>
                             <input
                               type="text"
@@ -659,7 +659,7 @@ const Checkout = ({
                           </div>
                           <div>
                             <label htmlFor="direccion" className="font-check">
-                              Direccion
+                              Address
                             </label>
                             <input
                               type="text"
@@ -735,13 +735,12 @@ const Checkout = ({
               <div className="w-full md:ml-7 flex flex-col px-3 md:px-0 font-check">
                 <div className="order-2">
                   <div className="w-full px-1 py-4 rounded-md">
-                    <h2 className="text-md mb-4 font-bold">
-                      RESUMEN DEL PEDIDO
-                    </h2>
-                    <p className=" font-semibold py-1">Subtotal: ${total}</p>
-                    <p className=" font-semibold py-1">Descuento: -0.00</p>
-                    <p className="mb-4 font-semibold  py-4">
-                      Total a pagar: ${total}
+                    <h2 className="text-md mb-4">Order Summary</h2>
+                    <p className=" font-bold py-1">Subtotal: ${total}</p>
+                    <p className=" font-bold py-1">Discount: -0.00</p>
+                    <p className=" font-bold py-1">Delivery: $4.99</p>
+                    <p className="mb-4 font-bold border-y-[1px] py-4">
+                      Total a pagar:${total + 5}
                     </p>
                   </div>
                 </div>
