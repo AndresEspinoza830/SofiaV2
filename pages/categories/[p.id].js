@@ -12,13 +12,7 @@ const Name = ({ data, carrito, eliminarProducto, pedido }) => {
 
   // const router = useRouter();
 
-  //categorias
-  // products = products.filter((p) => p.name !== "Uncategorized");
-  // console.log(products);
-  //productos
   data.map((p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, "")));
-
-  //   console.log(productH2);
 
   return (
     <Layout
@@ -41,7 +35,6 @@ const Name = ({ data, carrito, eliminarProducto, pedido }) => {
         type="button"
         onClick={() => setNavResponsive(!navResponsive)}
       >
-        Menu{" "}
         <svg
           className="w-4 h-4 ml-2"
           aria-hidden="true"
@@ -62,7 +55,7 @@ const Name = ({ data, carrito, eliminarProducto, pedido }) => {
             className="py-2 px-2 text-sm text-gray-700 dark:text-gray-200 flex flex-col"
             aria-labelledby="dropdownDefaultButton"
           >
-            {products.map((p) => (
+            {data.map((p) => (
               <Link
                 key={p.id}
                 className={`${
@@ -79,58 +72,44 @@ const Name = ({ data, carrito, eliminarProducto, pedido }) => {
         </div>
       )} */}
       <div className="md:h-full flex items-center text-gray-600">
-        {/* <div className=" -mx-1">
-          <h2 className="font-bold text-3xl font-abc uppercase mb-2">
-            {productH2[0].name}
-          </h2>
-          <p className="font-abc font-extralight leading-7 text-lg mb-4">
-            {productH2[0].yoast_head_json.og_description}
-          </p>
-        </div> */}
-
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-wrap -m-4">
-            {data.map((producto) => (
-              <Link
-                key={producto.id}
-                href={`/component/${producto.slug}`}
-                className="p-4 sm:w-1/2 lg:w-1/3 border mb-5 mx-3 md:mx-0 border-gray-200 bg-white shadow-lg lg:my-4 min-h-[400px] flex flex-col justify-between rounded-lg"
-                // className="my-1 w-full md:w-1/2 md:flex "
-              >
-                <div className="px-2 overflow-hidden">
-                  <div className="overflow-hidden">
-                    <Image
-                      alt="Placeholder"
-                      width={1000}
-                      height={400}
-                      className=" hover:scale-110 duration-300 ease-in-out"
-                      src={`${producto?.images[0]?.src ?? prueba.src}`}
-                    />
-                  </div>
-
-                  <h2 className="my-2 font-abc font-bold text-[#052617] uppercase">
-                    {producto.name}
-                  </h2>
-                  <h2 className="text-xl text-[#052617] font-bold">
-                    ${producto.price}
-                  </h2>
-                  <p className="font-normal my-2 my-custom-style ">
-                    {producto.description || (
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Quae, quasi!
-                      </p>
-                    )}
+        {data.map((producto) => (
+          <div
+            key={producto.id}
+            className="my-1 w-full md:w-1/2 md:flex lg:my-4 lg:px-4 lg:w-1/3 min-h-[400px] flex flex-col justify-between rounded-lg"
+          >
+            <div className="px-2 overflow-hidden">
+              <div className="overflow-hidden">
+                <Image
+                  alt="Placeholder"
+                  width={1000}
+                  height={400}
+                  className=" hover:scale-110 duration-300 ease-in-out"
+                  src={`${producto?.images[0]?.src ?? prueba.src}`}
+                />
+              </div>
+              <h2 className="my-2 font-abc font-bold text-[#052617] uppercase">
+                {producto.name}
+              </h2>
+              <h2 className="text-xl text-[#052617] font-bold">
+                ${producto.price}
+              </h2>
+              <p className="font-normal my-2 my-custom-style ">
+                {producto.description || (
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Quae, quasi! Quae, quasi!
                   </p>
-                </div>
-
-                <button className="self-end font-philo text-center bg-[#052617] w-full text-[#D9BF73] py-3 rounded-md hover:bg-[#0c5836] duration-1000 uppercase mb-4">
-                  Add to Cart
-                </button>
-              </Link>
-            ))}
+                )}
+              </p>
+            </div>
+            <Link
+              href={`/component/${producto.slug}`}
+              className="self-end font-philo text-center bg-[#052617] w-full text-[#D9BF73] py-3 rounded-md hover:bg-[#0c5836] duration-1000 uppercase mb-4"
+            >
+              Add to Cart
+            </Link>
           </div>
-        </div>
+        ))}
       </div>
     </Layout>
   );
@@ -145,36 +124,9 @@ export async function getServerSideProps({ query }) {
   const productosCategoria = await obtenerProductosCategoria(ruta).catch(
     (error) => console.error(error)
   );
-
   return {
     props: {
       data: productosCategoria.data,
     },
   };
 }
-
-// export async function getStaticProps({ query }) {
-//   const ruta = Object.values(query)[0];
-//   console.log(ruta);
-
-//   const productosCategoria = await obtenerProductosCategoria(ruta).catch(
-//     (error) => console.error(error)
-//   );
-
-//   const wooCommerceProducts = await fetchWooCommerceProducts().catch((error) =>
-//     console.error(error)
-//   );
-
-//   if (!wooCommerceProducts) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: {
-//       productos: productosCategoria.data,
-//       products: wooCommerceProducts.data,
-//     },
-//   };
-// }
