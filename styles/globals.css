@@ -9,3 +9,21 @@
 .header ul li {
   color: #fff;
 } */
+
+.abajo {
+  /* Estilos cuando se hace scroll */
+  transition: 0.3s all ease-in-out;
+  background-color: #1f6b11;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Otros estilos deseados */
+}
+
+.hidden {
+  display: none;
+  transition: 0.3s all ease-in-out;
+}

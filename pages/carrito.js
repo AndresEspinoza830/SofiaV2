@@ -116,7 +116,7 @@ const Carrito = ({
             <p className=" font-bold py-1">Discount: -0.00</p>
             <p className=" font-bold py-1">Delivery: $4.99</p>
             <p className="mb-4 font-bold border-y-[1px] py-4">
-              Total a pagar:${total + 5}
+              Total to pay:${total + 5}
             </p>
             <Link
               href="/checkout"

@@ -17,10 +17,18 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", function () {
-      var header = document.querySelector("header");
+    const handleScroll = () => {
+      const header = document.getElementById("header");
       header.classList.toggle("abajo", window.scrollY > 0);
-    });
+
+      const attention = document.getElementById("attention");
+      attention.classList.toggle("hidden", window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -159,7 +167,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
         </div>
       </div>
 
-      <div className="bg-black w-full py-4 px-2 md:px-0">
+      <div id="attention" className="bg-black w-full py-4 px-2 md:px-0">
         <h3 className="font-extrabold text-xl  border-white text-white uppercase text-center">
           Attention in New Jersey *
         </h3>

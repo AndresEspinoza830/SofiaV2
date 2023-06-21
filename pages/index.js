@@ -127,7 +127,7 @@ export default function Home({ carrito, eliminarProducto, pedido }) {
         </svg>
         <div className="text-[#D9BF73]">
           <h3 className="font-philo text-3xl">DELIVERY</h3>
-          <h4 className="font-philo text-xl">Llamenos al</h4>
+          <h4 className="font-philo text-xl">Call us at</h4>
           <p className="font-philo text-xl">449 1395 / 348 7802</p>
         </div>
         <div className="text-[#D9BF73]">
