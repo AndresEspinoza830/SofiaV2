@@ -168,60 +168,66 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
       </div>
 
       <div id="attention" className="bg-black w-full py-4 px-2 md:px-0">
-        <h3 className="font-extrabold text-xl  border-white text-white uppercase text-center">
+        <h3 className="font-extrabold text-lg  border-white text-white uppercase text-center">
           Attention in New Jersey *
         </h3>
-        <h3 className="font-extrabold text-xl  border-white text-white uppercase text-center">
+        <h3 className="font-extrabold text-lg  border-white text-white uppercase text-center">
           Delivery: Mon - Sun: 11:00 AM - 9:45 PM
         </h3>
       </div>
       <div className="w-full py-1 shadow-lg z-98">
         <div className="flex justify-between items-center w-full px-10 2xl:px-20">
           <Link href="/">
-            <Image src={logo} width={100} height={100} alt="Logo" />
+            <Image
+              src={logo}
+              className="logo2"
+              width={100}
+              height={100}
+              alt="Logo"
+            />
           </Link>
 
           <nav className="hidden md:block">
             <ul className="flex space-x-10 text-black">
               <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                <Link className="font-abc text-2xl" href="/">
+                <Link className="font-abc text-lg" href="/">
                   Home
                 </Link>
               </li>
               <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                <Link className="font-abc text-2xl" href="/about">
+                <Link className="font-abc text-lg" href="/about">
                   About us{" "}
                 </Link>
               </li>
               <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                <Link className="font-abc text-2xl" href="/menu">
+                <Link className="font-abc text-lg" href="/menu">
                   Menu
                 </Link>
               </li>
               <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
-                <Link className="font-abc text-2xl" href="/contact">
+                <Link className="font-abc text-lg" href="/contact">
                   Contact us
                 </Link>
               </li>
             </ul>
           </nav>
-          <div className="flex relative h-full">
-            <div className="w-6 h-6 bg-red-500 font-medium top-[-8px] left-[73px] text-white absolute rounded-full m-auto flex justify-center items-center">
+          <div className="flex relative h-full items-center">
+            <div className="w-5 h-5 bg-red-500 font-medium top-[-1px] left-[62px] text-white absolute rounded-full m-auto flex justify-center items-center">
               {carrito.length || "0"}
             </div>
             <Link href="tel:937498630" className="mr-4">
               <Image
                 src="/phone3.png"
-                width={40}
-                height={40}
-                className="w-[40px] h-[30]"
+                width={30}
+                height={30}
+                className="w-[30px] h-[20]"
                 alt=""
               />
             </Link>
             {/* <Link href="/carrito"> */}
             <svg
               viewBox="0 0 1024 1024"
-              width={32}
+              width={26}
               onClick={mostrarCarrito}
               className="mr-8 cursor-pointer"
               version="1.1"
@@ -230,7 +236,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
               <path d="M781.851307 974.093653a77.858133 77.858133 0 0 1-31.73376-6.690133 84.186453 84.186453 0 0 1-44.36992-44.352853 79.947093 79.947093 0 0 1 0-63.484587 86.859093 86.859093 0 0 1 18.568533-26.545493 79.486293 79.486293 0 0 1 26.17344-17.250987 84.107947 84.107947 0 0 1 32.1024-6.321493 88.1152 88.1152 0 0 1 32.853333 6.321493 77.85472 77.85472 0 0 1 26.54208 17.08032 86.81472 86.81472 0 0 1 18.55488 26.528427 79.803733 79.803733 0 0 1 0 63.484586 86.685013 86.685013 0 0 1-18.55488 26.54208 84.944213 84.944213 0 0 1-26.733226 18.56512 82.2784 82.2784 0 0 1-33.40288 6.12352z m-442.484054-2.22208a81.083733 81.083733 0 0 1-32.863573-6.690133 84.466347 84.466347 0 0 1-44.352853-44.36992 79.762773 79.762773 0 0 1 0-63.46752 86.685013 86.685013 0 0 1 18.56512-26.545493 79.274667 79.274667 0 0 1 26.159786-17.26464 86.951253 86.951253 0 0 1 33.21856-6.30784 83.899733 83.899733 0 0 1 32.119467 6.30784 79.435093 79.435093 0 0 1 26.17344 17.26464 87.1936 87.1936 0 0 1 18.558293 26.34752 79.872 79.872 0 0 1 0 63.501653 84.25472 84.25472 0 0 1-44.356266 44.352853 78.158507 78.158507 0 0 1-33.221974 6.87104z m521.741654-225.529173H303.168853a47.34976 47.34976 0 0 1-26.53184-6.864213 64.884053 64.884053 0 0 1-18.561706-20.043094 136.656213 136.656213 0 0 1-13.738667-29.883733 289.798827 289.798827 0 0 1-9.284267-33.235627c0-3.898027-2.594133-14.2848-5.92896-30.798506-3.341653-16.51712-7.04512-37.12-11.690666-61.057707l-15.418027-81.861973-17.08032-90.944854c-13.349547-71.03488-28.583253-150.592853-45.66016-238.70464l-2.594133-13.16864H43.874987a27.33056 27.33056 0 0 1-16.889174-4.642133 53.691733 53.691733 0 0 1-13.554346-14.66368 58.108587 58.108587 0 0 1-7.424-18.561707A99.62496 99.62496 0 0 1 3.413333 80.93696a30.651733 30.651733 0 0 1 9.458347-22.644053 33.037653 33.037653 0 0 1 24.13568-8.349014h111.36a61.320533 61.320533 0 0 1 26.17344 4.819627 41.796267 41.796267 0 0 1 14.46912 11.322027 47.104 47.104 0 0 1 7.994027 14.660266c2.092373 6.560427 3.826347 12.253867 5.19168 17.08032 1.11616 4.631893 2.420053 12.24704 3.710293 21.7088 1.303893 9.468587 2.792107 20.790613 4.27008 31.361707 1.491627 10.584747 4.63872 26.545493 6.690133 41.40032l2.034347 13.919573h742.437547a94.365013 94.365013 0 0 1 38.61504 4.635307 37.123413 37.123413 0 0 1 16.520533 13.359787 28.347733 28.347733 0 0 1 4.082347 16.151893 68.031147 68.031147 0 0 1-2.966187 18.561707c-2.106027 6.311253-6.690133 19.3024-13.738667 38.976853a6111.45728 6111.45728 0 0 0-23.002453 65.518933l-24.517973 70.71744a11156.288853 11156.288853 0 0 1-19.67104 55.68512 110.114133 110.114133 0 0 1-29.51168 51.971414 64.068267 64.068267 0 0 1-41.5744 12.997973H288.512l19.851947 128.24576h551.263573c32.105813 0 34.88768 13.55776 34.88768 27.2896a51.746133 51.746133 0 0 1-7.60832 28.583253c-3.15392 4.826453-10.758827 7.420587-22.463147 7.420587h-3.33824v0.01024zM279.04 490.390187l581.137067 1.11616 84.640426-224.034134-709.208746-2.225493 43.431253 225.143467z" />
             </svg>
             {/* </Link> */}
-            <button className="border-2 hidden md:block font-abc font-philo text-lg border-black bg-transparent hover:border-[#D9BF73] hover:text-[#D9BF73] rounded-sm py-2 px-6 duration-300">
+            <button className="border-2 hidden md:block font-abc text-base border-black bg-transparent hover:border-[#D9BF73] hover:text-[#D9BF73] rounded-sm py-2 px-6 duration-300">
               My Orders
             </button>
             <svg
@@ -271,7 +277,13 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
       >
         <div className="fixed letf-0 top-0 w-[75%] sm:w-[60%] md:w-[30%] h-screen bg-white p-3 ease-in duration-200">
           <div className="flex w-full items-center justify-between">
-            <Image src="/logo.jpeg" width={80} height={80} alt="" />
+            <Image
+              src="/logo.jpeg"
+              className="w-0"
+              width={80}
+              height={80}
+              alt=""
+            />
             <div>
               <svg
                 width={20}

@@ -12,15 +12,21 @@
 
 .abajo {
   /* Estilos cuando se hace scroll */
-  transition: 0.3s all ease-in-out;
-  background-color: #1f6b11;
+  transition: 0.8s all ease-in-out;
+  background-color: rgb(250, 250, 250, 0.3);
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 99;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-top: 1px;
+  padding-bottom: 1px;
   /* Otros estilos deseados */
+  .logo2 {
+    transition: 0.8s all ease-in-out;
+    width: 62px;
+  }
 }
 
 .hidden {
