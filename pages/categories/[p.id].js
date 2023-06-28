@@ -17,14 +17,32 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
 
   data.map((p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, "")));
 
+  const productH2 = products.filter(
+    (p) => router.asPath === `/categories/${p.id}`
+  );
+
   return (
     <Layout
       carrito={carrito}
       eliminarProducto={eliminarProducto}
       pedido={pedido}
     >
-      <div className="lg:flex max-w-[1360px] mx-auto">
-        <div className="hidden lg:flex sticky top-0 md:w-4/12 lg:w-3/12 xl:w-2/12">
+      <div className="max-w-[1360px] lg:mx-auto mx-2">
+        <h3 className="text-[#D9BF73] font-abc font-bold text-xl my-4">
+          {productH2[0].name}
+        </h3>
+        <div className="flex items-center ">
+          <Image
+            src={productH2[0].image.src}
+            width={300}
+            height={300}
+            className="rounded-md"
+          />
+          <p className="px-5 font-abc">{productH2[0].description}</p>
+        </div>
+      </div>
+      <div className="lg:flex max-w-[1360px] mx-auto mt-4">
+        <div className="hidden lg:flex sticky top-0 md:w-4/12 lg:w-3/12 xl:w-3/12 h-full">
           <div className="hidden lg:flex-col h-auto lg:flex w-full items-center text-start  border-gray-300 py-5 px-1 rounded-lg shadow-xl ">
             <Link
               href={"#"}
@@ -37,11 +55,15 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
             {products.map((p) => (
               <Link
                 key={p.id}
-                className="w-full border-y-[1px] rounded-md py-3 hover:bg-gray-100 transition duration-200 ease-in-out"
+                className={`${
+                  router.asPath === `/categories/${p.id}`
+                    ? "text-[#D9BF73] font-bold"
+                    : ""
+                }w-full border-y-[1px] rounded-md py-3 hover:bg-gray-100 transition duration-200 ease-in-out`}
                 href={`/categories/${p.id}`}
               >
                 <h2 className="font-abc text-sm font-extralight px-2">
-                  {p.name}
+                  {p.name} ({p.count})
                 </h2>
               </Link>
             ))}
@@ -96,11 +118,12 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
         </div>
 
         <div className="md:h-full flex items-center text-gray-700 max-w-[1360px] w-full mx-2  my-2">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9 ">
             {data.map((producto) => (
-              <div
+              <Link
+                href={`/component/${producto.slug}`}
                 key={producto.id}
-                className="my-1 w-full px-4  h-full flex flex-col justify-between rounded-lg bg-white shadow-md"
+                className="my-1 w-full px-4 hover:border-dashed border-[#D9BF73] hover:border-2   h-full flex flex-col justify-between rounded-lg bg-white shadow-md"
               >
                 <div className="px-2 overflow-hidden">
                   <div className="overflow-hidden">
@@ -108,32 +131,30 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
                       alt="Placeholder"
                       width={1000}
                       height={400}
-                      className="hover:scale-110 duration-300 ease-in-out"
+                      className="hover:scale-110 duration-300 ease-in-out mt-3"
                       src={`${producto?.images[0]?.src ?? prueba.src}`}
                     />
                   </div>
                   <h2 className="my-2 font-abc font-semibold text-[#052617] uppercase">
                     {producto.name}
                   </h2>
-                  <h2 className="text-xl text-[#052617] font-bold">
-                    ${producto.price}
-                  </h2>
+
                   <p className=" my-2 font-extralight my-custom-style">
                     {producto.description || (
-                      <p>
+                      <p className="my-custom-style">
                         Lorem ipsum dolor, sit amet consectetur adipisicing
                         elit. Quae, quasi! Quae, quasi!
                       </p>
                     )}
                   </p>
+                  <h2 className=" text-center text-2xl text-[#D9BF73] font-bold">
+                    ${producto.price}
+                  </h2>
                 </div>
-                <Link
-                  href={`/component/${producto.slug}`}
-                  className="self-end font-philo text-center bg-[#052617] w-full text-[#D9BF73] py-3 rounded-md hover:bg-[#0c5836] duration-1000 uppercase mb-4"
-                >
-                  Add to Cart
-                </Link>
-              </div>
+                <button className="self-end font-abc text-center text-white w-full bg-[#D9BF73] py-3 rounded-md  duration-1000 uppercase mb-4">
+                  + Add to Cart
+                </button>
+              </Link>
             ))}
           </div>
         </div>

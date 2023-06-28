@@ -23,13 +23,29 @@
   padding-top: 1px;
   padding-bottom: 1px;
   /* Otros estilos deseados */
-  .logo2 {
-    transition: 0.8s all ease-in-out;
-    width: 62px;
-  }
+}
+
+.logo2 {
+  transition: 0.8s all ease-in-out;
+  width: 62px;
 }
 
 .hidden {
   display: none;
   transition: 0.3s all ease-in-out;
+}
+
+@layer components {
+  .my-custom-style {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }

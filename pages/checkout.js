@@ -345,7 +345,7 @@ const Checkout = ({
             </Link>
           </div>
         ) : (
-          <div className="w-full flex flex-col-reverse md:flex-row">
+          <div className="w-full flex flex-col-reverse lg:flex-row mx-2">
             <div className="w-full">
               {/* Volver atras */}
               <div>
@@ -379,12 +379,12 @@ const Checkout = ({
               ) : (
                 <div className="w-full mb-[60px] md:mb-0">
                   <h2 className="text-2xl font-bold block px-3">Checkout</h2>
-                  <div className=" mx-[150px] flex  justify-center items-center  rounded-3xl border-2 border-black">
+                  <div className=" mx-[150px]   justify-center items-center  rounded-3xl ">
                     <button
                       onClick={handlerPick}
                       className={`${
                         delivery ? "disabled" : "bg-black p-2 text-white"
-                      } px-6 py-3 w-1/2 rounded-2xl  0 font-check`}
+                      } px-6 py-3 w-full lg:w-1/2 rounded-2xl  font-check`}
                     >
                       Pickup
                     </button>
@@ -392,7 +392,7 @@ const Checkout = ({
                       onClick={handlerDelivery}
                       className={`${
                         pickup ? "disabled" : "bg-black p-2 text-white"
-                      }  px-6 py-3 w-1/2  rounded-2xl  font-check`}
+                      }  px-4 py-3 text-center  w-full lg:w-1/2  rounded-2xl  font-check`}
                     >
                       Delivery
                     </button>
