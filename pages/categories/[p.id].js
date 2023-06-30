@@ -43,10 +43,10 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
       </div>
       <div className="lg:flex max-w-[1360px] mx-auto mt-4">
         <div className="hidden lg:flex sticky top-0 md:w-4/12 lg:w-3/12 xl:w-3/12 h-full">
-          <div className="hidden lg:flex-col h-auto lg:flex w-full items-center text-start  border-gray-300 py-5 px-1 rounded-lg shadow-xl ">
+          <div className="hidden lg:flex-col h-auto lg:flex w-full items-center text-start  border-gray-300 py-5 rounded-lg shadow-xl ">
             <Link
               href={"#"}
-              className="border-y-[1px] rounded-md py-3 w-full bg-[#052617] text-white"
+              className="border-y-[1px] rounded-md py-3 w-full bg-[#052617] text-white "
             >
               <h2 className="font-abc text-sm font-extralight px-2 uppercase">
                 Categories
@@ -57,12 +57,13 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
                 key={p.id}
                 className={`${
                   router.asPath === `/categories/${p.id}`
-                    ? "text-[#D9BF73] font-bold"
+                    ? "text-[#D9BF73] font-bold "
                     : ""
-                }w-full border-y-[1px] rounded-md py-3 hover:bg-gray-100 transition duration-200 ease-in-out`}
+                }w-full border-y-[1px] flex items-center   rounded-md py-3 hover:bg-gray-100 transition duration-200 ease-in-out bg-white`}
                 href={`/categories/${p.id}`}
               >
-                <h2 className="font-abc text-sm font-extralight px-2">
+                <img src="/chifa.png " className="w-9 ml-3" />
+                <h2 className="font-abc text-sm font-extralight px-2 ">
                   {p.name} ({p.count})
                 </h2>
               </Link>
@@ -126,12 +127,12 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
                 className="my-1 w-full px-4 hover:border-dashed border-[#D9BF73] hover:border-2   h-full flex flex-col justify-between rounded-lg bg-white shadow-md"
               >
                 <div className="px-2 overflow-hidden">
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden w-full">
                     <Image
                       alt="Placeholder"
                       width={1000}
                       height={400}
-                      className="hover:scale-110 duration-300 ease-in-out mt-3"
+                      className="hover:scale-110 duration-300 ease-in-out mt-3 w-full "
                       src={`${producto?.images[0]?.src ?? prueba.src}`}
                     />
                   </div>

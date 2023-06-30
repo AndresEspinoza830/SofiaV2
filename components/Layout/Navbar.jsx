@@ -7,6 +7,7 @@ import prueba from "../../public/default.png";
 const Navbar = ({ carrito, eliminarProducto, pedido }) => {
   const [cart, setCart] = useState(false);
   const [hamburguer, setHamburguer] = useState(false);
+  const [total, setTotal] = useState(0);
 
   const mostrarCarrito = () => {
     setCart(!cart);
@@ -15,6 +16,14 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
   const mostrarHamburguesa = () => {
     setHamburguer(!hamburguer);
   };
+
+  useEffect(() => {
+    const calculoTotal = carrito.reduce(
+      (total, producto) => total + producto.cantidad * producto.price,
+      0
+    );
+    setTotal(calculoTotal);
+  }, [carrito]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,16 +41,16 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
   }, []);
 
   return (
-    <header id="header" className="header">
+    <header id="header" className="header ">
       <div
         className={`${
           cart ? "translate-x-0" : "translate-x-full"
         } ease-in-out duration-300 fixed left-0 top-0 w-full h-screen z-10 bg-black/70`}
       >
-        <div className="fixed right-0 pt-[50px] top-0 w-[75%] sm:w-[60%] md:w-[28%] bg-white h-screen shadow-m p-2 transition-all ease-in-out duration-500 ">
-          <div className="flex justify-end mb-4">
+        <div className="fixed right-0  top-0 w-[75%] sm:w-[60%] md:w-[28%] bg-white h-screen shadow-m p-2 transition-all ease-in-out duration-500 ">
+          <div className="flex justify-end ">
             <svg
-              width={20}
+              width={15}
               className="cursor-pointer flex justify-end"
               onClick={() => setCart(false)}
               viewBox="0 0 1024 1024"
@@ -82,11 +91,14 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
               />
             </svg>
           </div>
+          <h4 className="font-abc mb-5 text-center font-bold text-xl">
+            Your Cart
+          </h4>
           {carrito.length === 0 ? (
             <p className="text-center">There are no products in the cart</p>
           ) : (
-            <>
-              <table className="w-full mb-4 z-50">
+            <div className="flex flex-col justify-between items-center h-full ">
+              <table className="w-full mb-4 z-50 font-abc">
                 <thead>
                   <tr>
                     <th>Product</th>
@@ -107,7 +119,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
                         />
                         <svg
                           width={10}
-                          className="cursor-pointer absolute right-3 fill-red-500"
+                          className="cursor-pointer w-5 absolute right-3 fill-white border-2 rounded-[50%] p-1 bg-gray-400"
                           onClick={() => eliminarProducto(p.id)}
                           viewBox="0 0 1024 1024"
                           version="1.1"
@@ -147,22 +159,23 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
                           />
                         </svg>
                       </td>
-                      <td>{p.cantidad}</td>
-                      <td>{p.price}</td>
+                      <td>x{p.cantidad}</td>
+                      <td>${p.price}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <div className="w-full">
-                <h3 className="font-philo mb-4">Subtotal:</h3>
+              <div className="w-full font-abc mb-[100px]">
+                <p className="font-philo mb-4 mx-3">Envio: $4</p>
+                <h3 className="font-philo mb-4 mx-3">Subtotal: ${total}</h3>
                 <Link
                   href="/carrito"
-                  className="bg-[#052617] text-white font-philo block text-center py-2"
+                  className="bg-[#052617] mx-3 rounded-md text-white font-philo block text-center py-2"
                 >
                   Go to Cart
                 </Link>
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>
@@ -187,7 +200,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
             />
           </Link>
 
-          <nav className="hidden md:block">
+          <nav className="hidden md:block ">
             <ul className="flex space-x-10 text-black">
               <li className="font-philo text-lg hover:text-[#D9BF73] duration-300">
                 <Link className="font-abc text-lg" href="/">
