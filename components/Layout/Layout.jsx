@@ -11,7 +11,7 @@ const Layout = ({ carrito, eliminarProducto, pedido, children }) => {
   };
 
   return (
-    <div className="relative bg-[url('/textura.jpg')] ">
+    <div className="relative bg-[url('/textura.jpg')]">
       <Navbar
         carrito={carrito}
         eliminarProducto={eliminarProducto}

@@ -47,7 +47,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
           cart ? "translate-x-0" : "translate-x-full"
         } ease-in-out duration-300 fixed left-0 top-0 w-full h-screen z-10 bg-black/70`}
       >
-        <div className="fixed right-0  top-0 w-[75%] sm:w-[60%] md:w-[28%] bg-white h-screen shadow-m p-2 transition-all ease-in-out duration-500 ">
+        <div className="fixed right-0  top-0 w-[75%] sm:w-[60%] md:w-[38%] lg:w-[28%] bg-white h-screen shadow-m p-2 transition-all ease-in-out duration-500 ">
           <div className="flex justify-end ">
             <svg
               width={15}
@@ -104,6 +104,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
                     <th>Product</th>
                     <th>Quantity</th>
                     <th>Price</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody className="">
@@ -117,9 +118,14 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
                           height={100}
                           src={p.image ?? prueba.src}
                         />
+                      </td>
+                      <td>x{p.cantidad}</td>
+                      <td>${p.price}</td>
+                      <td className="">
+                        {" "}
                         <svg
                           width={10}
-                          className="cursor-pointer w-5 absolute right-3 fill-white border-2 rounded-[50%] p-1 bg-gray-400"
+                          className="cursor-pointer w-5  fill-white border-2 rounded-[50%] p-1 bg-gray-400"
                           onClick={() => eliminarProducto(p.id)}
                           viewBox="0 0 1024 1024"
                           version="1.1"
@@ -159,8 +165,6 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
                           />
                         </svg>
                       </td>
-                      <td>x{p.cantidad}</td>
-                      <td>${p.price}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -193,9 +197,9 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
           <Link href="/">
             <Image
               src={logo}
-              className="logo2"
-              width={100}
-              height={100}
+              className="logo2 w-[100px]"
+              width={200}
+              height={200}
               alt="Logo"
             />
           </Link>

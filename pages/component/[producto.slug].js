@@ -140,7 +140,7 @@ const Producto = ({
           }
         />
       </Head>
-      <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto">
+      <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto ">
         <div className="w-full md:mx-2 px-2">
           <div>
             <Link href="/menu" className="flex items-center my-2">

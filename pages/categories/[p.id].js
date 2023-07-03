@@ -21,6 +21,10 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
     (p) => router.asPath === `/categories/${p.id}`
   );
 
+  products.filter((p) => p.name !== "Uncategorized");
+
+  console.log(products);
+
   return (
     <Layout
       carrito={carrito}
@@ -28,15 +32,15 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
       pedido={pedido}
     >
       <div className="max-w-[1360px] lg:mx-auto mx-2">
-        <h3 className="text-[#D9BF73] font-abc font-bold text-xl my-4">
+        <h3 className="text-[#D9BF73] pl-5 lg:pl-0 font-abc font-bold text-xl my-4">
           {productH2[0].name}
         </h3>
-        <div className="flex items-center ">
+        <div className="flex flex-col md:flex-row  items-center ">
           <Image
             src={productH2[0].image.src}
             width={300}
             height={300}
-            className="rounded-md"
+            className="rounded-md mb-2 lg:mb-0"
           />
           <p className="px-5 font-abc">{productH2[0].description}</p>
         </div>
@@ -62,7 +66,7 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
                 }w-full border-y-[1px] flex items-center   rounded-md py-3 hover:bg-gray-100 transition duration-200 ease-in-out bg-white`}
                 href={`/categories/${p.id}`}
               >
-                <img src="/chifa.png " className="w-9 ml-3" />
+                <img src={`/svg/${p.slug}.svg`} className="w-9 ml-3" />
                 <h2 className="font-abc text-sm font-extralight px-2 ">
                   {p.name} ({p.count})
                 </h2>
@@ -118,15 +122,15 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
           )}
         </div>
 
-        <div className="md:h-full flex items-center text-gray-700 max-w-[1360px] w-full mx-2  my-2">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-9 ">
+        <div className="md:h-full flex items-center text-gray-700 max-w-[1360px] w-full lg:mx-2 mt-4">
+          <div className="grid mx-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
             {data.map((producto) => (
               <Link
                 href={`/component/${producto.slug}`}
                 key={producto.id}
-                className="my-1 w-full px-4 hover:border-dashed border-[#D9BF73] hover:border-2   h-full flex flex-col justify-between rounded-lg bg-white shadow-md"
+                className="my-1 w-full px-4  hover:border-dashed border-[#D9BF73] hover:border-2   h-full flex flex-col justify-between rounded-lg bg-white shadow-md"
               >
-                <div className="px-2 overflow-hidden">
+                <div className="px-2 overflow-hidden ">
                   <div className="overflow-hidden w-full">
                     <Image
                       alt="Placeholder"
