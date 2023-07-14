@@ -14,7 +14,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      abc: ["Edu NSW ACT Foundation", "cursive"],
+      abc: ["Montserrat", "sans-serif"],
       check: ["Patua One", "cursive"],
     },
   },
