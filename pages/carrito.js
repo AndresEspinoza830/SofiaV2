@@ -3,6 +3,7 @@ import Link from "next/link"; //Primero importar cosas de react, next,componente
 import Image from "next/image";
 import prueba from "../public/default.png";
 import Layout from "@/components/Layout/Layout";
+import Modal from "@/components/Modal";
 
 const Carrito = ({
   carrito,
@@ -13,6 +14,7 @@ const Carrito = ({
   pedido,
 }) => {
   const [total, setTotal] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const calculoTotal = carrito.reduce(
@@ -27,14 +29,19 @@ const Carrito = ({
     setCarrito([]);
   };
 
+  const mostrarModal = () => {
+    setOpenModal(!openModal);
+  };
+
   return (
     <Layout carrito={carrito} eliminarProducto={eliminarProducto}>
+      {openModal && <Modal eliminarProducto={eliminarProducto} />}
       {carrito.length === 0 ? (
         <p className="flex justify-center mt-4">
           No hay productos seleccionados
         </p>
       ) : (
-        <div className="w-full mx-auto lg:flex max-w-[1360px] py-10 px-4 md:px-2 font-abc">
+        <div className="w-full  mx-auto lg:flex max-w-[1360px] py-10 px-4 md:px-2 font-abc">
           <table className="w-full md:w-3/4 table-auto mx-auto lg:mx-0">
             <thead>
               <tr>
@@ -45,7 +52,7 @@ const Carrito = ({
                 <th>Delete</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y-[8px] divide-transparent font-abc text-sm md:text-lg">
               {carrito.map((producto) => (
                 <tr key={producto.id}>
                   <td>
@@ -67,7 +74,8 @@ const Carrito = ({
                       className="cursor-pointer m-auto hover:fill-red-600 hover:scale-110"
                       width={23}
                       viewBox="0 0 1024 1024"
-                      onClick={() => eliminarProducto(producto.id)}
+                      // onClick={() => eliminarProducto(producto.id)}
+                      onClick={mostrarModal}
                       version="1.1"
                       xmlns="http://www.w3.org/2000/svg"
                     >

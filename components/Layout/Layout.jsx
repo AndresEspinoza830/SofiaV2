@@ -11,7 +11,7 @@ const Layout = ({ carrito, eliminarProducto, pedido, children }) => {
   };
 
   return (
-    <div className="relative bg-[url('/textura.jpg')] min-h-screen">
+    <div className="relative bg-[url('/textura.jpg')] ">
       <Navbar
         carrito={carrito}
         eliminarProducto={eliminarProducto}
@@ -24,7 +24,7 @@ const Layout = ({ carrito, eliminarProducto, pedido, children }) => {
         src="/chevron-abajo.png"
         alt="chevron"
         onClick={handleClick}
-        className="fixed  right-[60px] bg-white cursor-pointer transform rotate-180 animate-bounce  w-[36px]  rounded-[50%] bottom-[100px] shadow-xl"
+        className="fixed  right-[60px] z-9 bg-white cursor-pointer transform rotate-180 animate-bounce  w-[36px]  rounded-[50%] bottom-[100px] shadow-xl"
       />
       <Footer />
     </div>

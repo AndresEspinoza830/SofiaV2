@@ -345,7 +345,7 @@ const Checkout = ({
             </Link>
           </div>
         ) : (
-          <div className="w-full flex flex-col-reverse lg:flex-row mx-2">
+          <div className="w-full flex flex-col-reverse lg:flex-row px-2">
             <div className="w-full">
               {/* Volver atras */}
               <div>
@@ -377,14 +377,14 @@ const Checkout = ({
                   />
                 </div>
               ) : (
-                <div className="w-full mb-[60px] md:mb-0">
+                <div className="w-full mb-[60px] md:mb-0 px-0">
                   <h2 className="text-2xl font-bold block px-3">Checkout</h2>
-                  <div className=" mx-[150px]   justify-center items-center  rounded-3xl ">
+                  <div className=" mx-[150px]  justify-center items-center  rounded-3xl ">
                     <button
                       onClick={handlerPick}
                       className={`${
                         delivery ? "disabled" : "bg-black p-2 text-white"
-                      } px-6 py-3 w-full lg:w-1/2 rounded-2xl  font-abc`}
+                      } px-6 py-3 w-fit lg:w-1/2 rounded-2xl  font-abc`}
                     >
                       Pickup
                     </button>
@@ -392,15 +392,15 @@ const Checkout = ({
                       onClick={handlerDelivery}
                       className={`${
                         pickup ? "disabled" : "bg-black p-2 text-white"
-                      }  px-4 py-3 text-center  w-full lg:w-1/2  rounded-2xl  font-abc`}
+                      }  px-6 py-3 text-center  w-fit lg:w-1/2  rounded-2xl  font-abc`}
                     >
                       Delivery
                     </button>
                   </div>
                   {pickup ? (
-                    <>
-                      <div className="flex justify-between space-x-6 p-3 font-abc mt-4 shadow-md shadow-gray-400">
-                        <h3 className="text-lg font-bold">DETAILS</h3>
+                    <div>
+                      <div className="flex justify-between space-x-6 px-3 font-abc mt-4  shadow-md shadow-gray-400">
+                        <h3 className="text-base font-bold">DETAILS</h3>
                         <div className="flex">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -440,7 +440,7 @@ const Checkout = ({
                         </div>
                       </div>
                       <div className="shadow-md shadow-gray-400 mt-6">
-                        <h3 className="p-3 font-abc text-lg font-bold">
+                        <h3 className="p-3 font-abc text-base font-bold">
                           CONTACT
                         </h3>
                         <form
@@ -535,13 +535,13 @@ const Checkout = ({
                           />
                         </form>
                       </div>
-                    </>
+                    </div>
                   ) : (
                     " "
                   )}
                   {delivery ? (
-                    <>
-                      <div className="flex justify-between space-x-6 p-3 font-abc mt-4 shadow-md shadow-gray-400">
+                    <div className="px-2">
+                      <div className="flex justify-between md:space-x-6 p-3 font-abc mt-4 shadow-md shadow-gray-400">
                         <h3 className="text-lg font-bold">DETAILS</h3>
                         <div className="flex">
                           <svg
@@ -722,7 +722,7 @@ const Checkout = ({
                           />
                         </form>
                       </div>
-                    </>
+                    </div>
                   ) : (
                     " "
                   )}
@@ -754,7 +754,7 @@ const Checkout = ({
                       <th>Price</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="divide-y-[8px] divide-transparent font-abc text-sm md:text-lg">
                     {carrito.map((producto) => (
                       <tr key={producto.id}>
                         <td>
