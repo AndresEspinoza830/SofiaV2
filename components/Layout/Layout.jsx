@@ -11,13 +11,14 @@ const Layout = ({ carrito, eliminarProducto, pedido, children }) => {
   };
 
   return (
-    <div className="relative bg-[url('/textura.jpg')]">
+    <div className="relative bg-[url('/textura.jpg')] min-h-screen">
       <Navbar
         carrito={carrito}
         eliminarProducto={eliminarProducto}
         pedido={pedido}
       />
-      {children}
+      <div className="min-h-screen">{children}</div>
+
       <img
         ref={topElementRef}
         src="/chevron-abajo.png"

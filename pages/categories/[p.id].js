@@ -32,7 +32,7 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
       pedido={pedido}
     >
       <div className="max-w-[1360px] lg:mx-auto mx-2">
-        <h3 className="text-[#D9BF73] pl-5 lg:pl-0 font-abc font-bold text-xl my-4">
+        <h3 className="text-[#D9BF73] pl-5 lg:pl-0 font-abc font-extrabold text-2xl my-4">
           {productH2[0].name}
         </h3>
         <div className="flex flex-col md:flex-row  items-center ">
@@ -42,7 +42,7 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
             height={300}
             className="rounded-md mb-2 lg:mb-0"
           />
-          <p className="px-5 font-abc">{productH2[0].description}</p>
+          <p className="px-5 font-extralight">{productH2[0].description}</p>
         </div>
       </div>
       <div className="lg:flex max-w-[1360px] mx-auto mt-4">
@@ -63,11 +63,17 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
                   router.asPath === `/categories/${p.id}`
                     ? "text-[#D9BF73] font-bold "
                     : ""
-                }w-full border-y-[1px] flex items-center   rounded-md py-3 hover:bg-gray-100 transition duration-200 ease-in-out bg-white`}
+                }w-full border-y-[1px] flex items-center  rounded-md py-3 hover:bg-gray-100 transition duration-200 ease-in-out bg-white`}
                 href={`/categories/${p.id}`}
               >
                 <img src={`/svg/${p.slug}.svg`} className="w-9 ml-3" />
-                <h2 className="font-abc text-sm font-extralight px-2 ">
+                <h2
+                  className={
+                    p.name !== "Uncategorized"
+                      ? "font-abc text-sm font-extralight px-2 "
+                      : "hidden"
+                  }
+                >
                   {p.name} ({p.count})
                 </h2>
               </Link>
@@ -111,10 +117,11 @@ const Name = ({ data, carrito, eliminarProducto, pedido, products }) => {
                       router.asPath === `/categories/${p.id}`
                         ? "bg-[#D9BF73] text-white"
                         : ""
-                    } w-full text-lg font-abc font-extralight text-center border-b-2 py-2`}
+                    } w-full text-lg font-abc font-extralight text-center border-b-2 py-2 flex items-center`}
                     href={`/categories/${p.id}`}
                   >
-                    {p.name}
+                    <img src={`/svg/${p.slug}.svg`} className="w-9 ml-3" />
+                    <h2 className="ml-4"> {p.name}</h2>
                   </Link>
                 ))}
               </ul>

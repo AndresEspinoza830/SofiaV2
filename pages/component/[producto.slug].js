@@ -21,9 +21,10 @@ const Producto = ({
 
   data.map((p) => (p.description = p.description.replace(/(<([^>]+)>)/gi, "")));
 
-  console.log(productosCross);
+  // console.log(productosCross);
 
   const product = data[0];
+  console.log(product);
 
   const handleCarrito = (e) => {
     e.preventDefault();
@@ -143,11 +144,14 @@ const Producto = ({
       <div className="max-w-[1320px] px-2 md:px-10 py-8 mx-auto ">
         <div className="w-full md:mx-2 px-2">
           <div>
-            <Link href="/menu" className="flex items-center my-2">
+            <Link
+              href={`/categories/${product.categories[0].id}`}
+              className="flex items-center my-2 mx-2"
+            >
               <svg
                 viewBox="0 0 1024 1024"
                 version="1.1"
-                width={25}
+                width={16}
                 className="cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -156,20 +160,20 @@ const Producto = ({
                   fill=""
                 />
               </svg>
-              <p className="font-medium">Back</p>
+              <p className="font-medium ml-1">Back</p>
             </Link>
-            <h2 className="text-[#052617] text-3xl font-extrabold mb-6 font-philo">
+            <h2 className="text-[#052617] text-3xl font-extrabold px-3 md:px-0 mb-2 font-abc">
               {product.name}
             </h2>
           </div>
           <div className="flex flex-col-reverse items-center md:flex-row w-full">
             <form className="w-full md:w-3/5 mr-2 p-3" onSubmit={handleCarrito}>
-              <h3 className="font-philo font-bold text-xl mb-2">Description</h3>
-              <p className="font-philo text-xl text-[#555555] mb-5 mt-1">
+              <h3 className="font-abc font-bold text-xl mb-2">Description</h3>
+              <p className="font-abc text-md font-extralight text-[#555555] mb-5 mt-1">
                 {product.description}
               </p>
               <div className="flex items-center mb-5">
-                <h3 className="font-philo font-bold text-xl mb-2">Quantity</h3>
+                <h3 className="font-abc font-bold text-xl mb-2">Quantity</h3>
                 <div className="flex flex-row h-10 rounded-lg relative bg-transparent ml-4">
                   <select
                     className="w-24 text-center bg-gray-200 shadow-md shadow-inherit"
@@ -190,21 +194,21 @@ const Producto = ({
                   </select>
                 </div>
               </div>
-              <h3 className="font-philo font-bold text-xl mb-4">
-                NOTES FOR THER KITCHEN
+              <h3 className="font-abc font-bold text-xl mb-2">
+                Notes for ther Kitchen
               </h3>
               <div className="flex flex-col mb-5">
                 <input
                   type="text"
                   id="mensaje"
-                  className="bg-transparent border border-gray-500 h-[100px] outline-offset-0 rounded-lg text-black px-8 py-3 focus:outline-none"
+                  className="bg-transparent border border-gray-400 h-[100px] outline-offset-0 rounded-lg text-black px-8 py-3 focus:outline-none"
                 />
               </div>
-              <h3 className="font-philo font-extrabold text-4xl mb-8 text-[#052617]">
+              <h3 className="font-abc font-extrabold text-4xl mb-8 text-[#052617]">
                 ${product.price}
               </h3>
               <input
-                className="bg-[#052617] hover:bg-[#0c5836] transition duration-500 hover:shadow-md text-[#D9BF73] w-full py-3 rounded-lg font-philo text-xl font-bold text-center cursor-pointer"
+                className="bg-[#052617] hover:bg-[#0c5836] transition duration-500 hover:shadow-md text-[#D9BF73] w-full py-3 rounded-lg font-abc text-xl font-bold text-center cursor-pointer"
                 value="ADD TO CART"
                 type="submit"
               />
@@ -234,7 +238,7 @@ const Producto = ({
                   alt={product.name}
                 />
               </div>
-              <h2 className="text-[#052617] text-xl font-extrabold font-philo">
+              <h2 className="text-[#052617] text-xl font-extrabold font-abc">
                 {product.name}
               </h2>
               <h3 className="font-philo font-extrabold text-2xl  text-[#052617]">

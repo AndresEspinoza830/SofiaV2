@@ -34,8 +34,8 @@ const Carrito = ({
           No hay productos seleccionados
         </p>
       ) : (
-        <div className="w-full mx-auto md:flex max-w-[1360px] py-10 px-2">
-          <table className="w-full md:w-3/4 table-auto">
+        <div className="w-full mx-auto lg:flex max-w-[1360px] py-10 px-4 md:px-2 font-abc">
+          <table className="w-full md:w-3/4 table-auto mx-auto lg:mx-0">
             <thead>
               <tr>
                 <th className="text-start">Dish</th>
@@ -53,35 +53,15 @@ const Carrito = ({
                       src={producto.image ?? prueba.src}
                       alt={producto.name}
                       className="flex"
-                      width={150}
-                      height={150}
+                      width={110}
+                      height={110}
                     />
                   </td>
                   <td className="text-center">{producto.name}</td>
-                  <td className="">
-                    <select
-                      className="text-center"
-                      onChange={(e) =>
-                        actualizarCantidad({
-                          id: producto.id,
-                          cantidad: e.target.value,
-                        })
-                      }
-                      value={producto.cantidad}
-                    >
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                    </select>
+                  <td className="text-center hidden md:block">
+                    x{producto.cantidad}
                   </td>
-                  <td className="text-center">{producto.price}</td>
+                  <td className="text-center">${producto.price}</td>
                   <td>
                     <svg
                       className="cursor-pointer m-auto hover:fill-red-600 hover:scale-110"
@@ -99,7 +79,7 @@ const Carrito = ({
               {carrito.length ? (
                 <button
                   type="button"
-                  className="bg-indigo-700 mt-3 md:mt-0 text-white py-3 w-full md:px-10 rounded-md"
+                  className="bg-indigo-700 mt-4 text-white py-3 w-full lg:w-fit md:px-10 rounded-md"
                   onClick={handleEliminar}
                 >
                   Remove all
@@ -110,12 +90,12 @@ const Carrito = ({
             </tbody>
           </table>
 
-          <div className="mt-5 md:mt-0 md:w-1/4 border-[1px] px-4 py-4 rounded-md">
-            <h2 className="text-md mb-4">Order Summary</h2>
-            <p className=" font-bold py-1">Subtotal: ${total}</p>
-            <p className=" font-bold py-1">Discount: -0.00</p>
-            <p className=" font-bold py-1">Delivery: $4.99</p>
-            <p className="mb-4 font-bold border-y-[1px] py-4">
+          <div className="mt-5 md:mt-0 md:w-1/4 border-[2px]  mx-auto lg:mx-0 border-stone-900 px-4 py-4 rounded-md h-full">
+            <h2 className="text mb-4 font-bold">Order Summary</h2>
+            <p className="text-sm font-normal py-1">Subtotal: ${total}</p>
+            <p className="text-sm font-normal py-1">Discount: -0.00</p>
+            <p className="text-sm font-normal py-1">Delivery: $4.99</p>
+            <p className="text mb-4 font-bold border-y-[1px] py-4">
               Total to pay:${total + 5}
             </p>
             <Link

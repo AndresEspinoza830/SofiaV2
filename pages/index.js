@@ -13,7 +13,7 @@ export default function Home({ carrito, eliminarProducto, pedido }) {
       eliminarProducto={eliminarProducto}
       pedido={pedido}
     >
-      <div className=" w-full bg-[url('/banner.jpg')] h-screen bg-cover bg-no-repeat flex justify-center items-center ">
+      <div className=" w-full bg-[url('/banner.jpg')]  h-screen bg-cover bg-no-repeat flex justify-center items-center ">
         <div className="absolute text-[#F2F2F2] text-center flex flex-col justify-center items-center mx-auto z-6">
           <div className="flex items-end space-x-2">
             <div className="flex space-x-1">
@@ -74,7 +74,7 @@ export default function Home({ carrito, eliminarProducto, pedido }) {
         </div>
       </div>
 
-      <div className="max-w-[1360px] w-full mx-auto bg-white rounded-sm py-12">
+      <div className="max-w-[1360px] w-full mx-auto bg-none rounded-sm py-12">
         <h2 className="font-extrabold text-5xl mb-1 text-center tracking-widest mt-0 font-abc text-[#052617]">
           Our Dishes
         </h2>

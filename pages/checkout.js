@@ -314,7 +314,7 @@ const Checkout = ({
       pedido={pedido}
       className="relative"
     >
-      <div className="w-full mx-auto max-w-[1360px] py-10 flex">
+      <div className="w-full mx-auto max-w-[1360px] py-10 flex font-abc">
         {finish ? (
           <div className="flex flex-col w-full justify-center items-center space-y-3">
             <h2 className="font-bold text-2xl  text-center">
@@ -384,7 +384,7 @@ const Checkout = ({
                       onClick={handlerPick}
                       className={`${
                         delivery ? "disabled" : "bg-black p-2 text-white"
-                      } px-6 py-3 w-full lg:w-1/2 rounded-2xl  font-check`}
+                      } px-6 py-3 w-full lg:w-1/2 rounded-2xl  font-abc`}
                     >
                       Pickup
                     </button>
@@ -392,14 +392,14 @@ const Checkout = ({
                       onClick={handlerDelivery}
                       className={`${
                         pickup ? "disabled" : "bg-black p-2 text-white"
-                      }  px-4 py-3 text-center  w-full lg:w-1/2  rounded-2xl  font-check`}
+                      }  px-4 py-3 text-center  w-full lg:w-1/2  rounded-2xl  font-abc`}
                     >
                       Delivery
                     </button>
                   </div>
                   {pickup ? (
                     <>
-                      <div className="flex justify-between space-x-6 p-3 font-check mt-4 shadow-md shadow-gray-400">
+                      <div className="flex justify-between space-x-6 p-3 font-abc mt-4 shadow-md shadow-gray-400">
                         <h3 className="text-lg font-bold">DETAILS</h3>
                         <div className="flex">
                           <svg
@@ -440,7 +440,7 @@ const Checkout = ({
                         </div>
                       </div>
                       <div className="shadow-md shadow-gray-400 mt-6">
-                        <h3 className="p-3 font-check text-lg font-bold">
+                        <h3 className="p-3 font-abc text-lg font-bold">
                           CONTACT
                         </h3>
                         <form
@@ -450,7 +450,7 @@ const Checkout = ({
                         >
                           <div className="w-full flex space-x-6">
                             <div className="w-full">
-                              <label className="font-check">Name</label>
+                              <label className="font-abc">Name</label>
                               <input
                                 type="text"
                                 className="w-full bg-[#f2f2f2] p-2"
@@ -467,7 +467,7 @@ const Checkout = ({
                               )}
                             </div>
                             <div className="w-full">
-                              <label htmlFor="apellido" className="font-check">
+                              <label htmlFor="apellido" className="font-abc">
                                 Last Name
                               </label>
                               <input
@@ -488,7 +488,7 @@ const Checkout = ({
                             </div>
                           </div>
                           <div>
-                            <label htmlFor="email" className="font-check">
+                            <label htmlFor="email" className="font-abc">
                               Email
                             </label>
                             <input
@@ -508,7 +508,7 @@ const Checkout = ({
                             )}
                           </div>
                           <div>
-                            <label htmlFor="telefono" className="font-check">
+                            <label htmlFor="telefono" className="font-abc">
                               Telefono
                             </label>
                             <input
@@ -541,7 +541,7 @@ const Checkout = ({
                   )}
                   {delivery ? (
                     <>
-                      <div className="flex justify-between space-x-6 p-3 font-check mt-4 shadow-md shadow-gray-400">
+                      <div className="flex justify-between space-x-6 p-3 font-abc mt-4 shadow-md shadow-gray-400">
                         <h3 className="text-lg font-bold">DETAILS</h3>
                         <div className="flex">
                           <svg
@@ -571,7 +571,7 @@ const Checkout = ({
                         </div>
                       </div>
                       <div className="shadow-md shadow-gray-400 mt-6">
-                        <h3 className="p-3 font-check text-lg font-bold">
+                        <h3 className="p-3 font-abc text-lg font-bold">
                           CONTACT
                         </h3>
                         <form
@@ -581,7 +581,7 @@ const Checkout = ({
                         >
                           <div className="w-full flex space-x-6">
                             <div className="w-full">
-                              <label className="font-check">Name</label>
+                              <label className="font-abc">Name</label>
                               <input
                                 type="text"
                                 className="w-full bg-[#f2f2f2] p-2"
@@ -598,7 +598,7 @@ const Checkout = ({
                               )}
                             </div>
                             <div className="w-full">
-                              <label htmlFor="apellido" className="font-check">
+                              <label htmlFor="apellido" className="font-abc">
                                 Last Name
                               </label>
                               <input
@@ -619,7 +619,7 @@ const Checkout = ({
                             </div>
                           </div>
                           <div>
-                            <label htmlFor="email" className="font-check">
+                            <label htmlFor="email" className="font-abc">
                               Email
                             </label>
                             <input
@@ -639,7 +639,7 @@ const Checkout = ({
                             )}
                           </div>
                           <div>
-                            <label htmlFor="telefono" className="font-check">
+                            <label htmlFor="telefono" className="font-abc">
                               Phone
                             </label>
                             <input
@@ -658,7 +658,7 @@ const Checkout = ({
                             )}
                           </div>
                           <div>
-                            <label htmlFor="direccion" className="font-check">
+                            <label htmlFor="direccion" className="font-abc">
                               Address
                             </label>
                             <input
@@ -672,7 +672,7 @@ const Checkout = ({
                             />
                           </div>
                           <div>
-                            <label htmlFor="city" className="font-check">
+                            <label htmlFor="city" className="font-abc">
                               City
                             </label>
                             <input
@@ -686,7 +686,7 @@ const Checkout = ({
                             />
                           </div>
                           <div>
-                            <label htmlFor="state" className="font-check">
+                            <label htmlFor="state" className="font-abc">
                               State
                             </label>
                             <input
@@ -700,7 +700,7 @@ const Checkout = ({
                             />
                           </div>
                           <div>
-                            <label htmlFor="postcode" className="font-check">
+                            <label htmlFor="postcode" className="font-abc">
                               PostCode / ZIP
                             </label>
                             <input
@@ -732,7 +732,7 @@ const Checkout = ({
             {pending ? (
               ""
             ) : (
-              <div className="w-full md:ml-7 flex flex-col px-3 md:px-0 font-check">
+              <div className="w-full flex flex-col px-3 font-abc">
                 <div className="order-2">
                   <div className="w-full px-1 py-4 rounded-md">
                     <h2 className="text-md mb-4">Order Summary</h2>
@@ -745,7 +745,7 @@ const Checkout = ({
                   </div>
                 </div>
 
-                <table className="w-full order-1 table-auto font-check">
+                <table className="w-full order-1 table-auto font-abc">
                   <thead>
                     <tr>
                       <th>Dish</th>
