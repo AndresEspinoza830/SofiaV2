@@ -232,7 +232,7 @@ const Navbar = ({ carrito, eliminarProducto, pedido }) => {
             <div className="w-5 h-5 bg-red-500 font-medium top-[-1px] left-[62px] text-white absolute rounded-full m-auto flex justify-center items-center">
               {carrito.length || "0"}
             </div>
-            <Link href="tel:937498630" className="mr-4">
+            <Link href="tel:(908) 469-1287" className="mr-4">
               <Image
                 src="/phone3.png"
                 width={30}

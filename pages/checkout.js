@@ -767,7 +767,7 @@ const Checkout = ({
                           />
                         </td>
                         <td className="text-center">{producto.name}</td>
-                        <td className="text-center">{producto.cantidad}</td>
+                        <td className="text-center">x{producto.cantidad}</td>
                         <td className="text-center">{producto.price}</td>
                       </tr>
                     ))}
