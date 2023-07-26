@@ -10,8 +10,8 @@ const About = ({ data, carrito, eliminarProducto, pedido }) => {
       pedido={pedido}
     >
       <div className=" w-full bg-[url('/about.jpg')] h-[70vh]  bg-cover bg-no-repeat flex justify-center items-center "></div>
-      <div className="flex justify-center items-center mt-3">
-        <div className="font-abc w-1/3 ">
+      <div className="flex justify-center flex-col md:flex-row items-center mt-3 space-x-10">
+        <div className="font-abc w-full px-4 md:w-1/3 py-4">
           <h3 className="text-xl mb-2 font-bold ">Our History</h3>
           <h2 className="text">
             Sofia's Restaurant Welcome to Sofia's Restaurant! We provide our
@@ -35,7 +35,7 @@ const About = ({ data, carrito, eliminarProducto, pedido }) => {
             non-characteristic words etc.
           </p>
         </div>
-        <Image src={logo} className="w-1/5" />
+        <Image src={logo} className="w-[300px]" />
       </div>
     </Layout>
   );

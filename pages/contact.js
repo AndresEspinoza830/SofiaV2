@@ -12,14 +12,15 @@ const Contact = ({ data, carrito, eliminarProducto, pedido }) => {
       >
         <section class="bg-white dark:bg-gray-900 flex flex-col items-center font-abc">
           <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
+            <h2 class="mb-4 text-4xl tracking-tight font-bold text-center text-gray-900 dark:text-white">
               Contact Us
             </h2>
-            <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+            <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 text-sm">
               Got a technical issue? Want to send feedback about a beta feature?
               Need details about our Business plan? Let us know.
             </p>
             <form
+              method="POST"
               action="http://localhost:3001/enviar-correo"
               class="space-y-8"
             >
@@ -70,7 +71,7 @@ const Contact = ({ data, carrito, eliminarProducto, pedido }) => {
                   placeholder="Leave a comment..."
                 ></textarea>
               </div>
-              <div className="w-full flex items-center">
+              <div className="w-full flex items-center justify-center">
                 <button
                   type="submit"
                   class="py-3 px-5 w-full bg-black text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
