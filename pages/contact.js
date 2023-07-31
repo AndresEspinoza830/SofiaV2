@@ -1,8 +1,33 @@
 import Layout from "@/components/Layout/Layout";
 import Image from "next/image";
 import logo from "../public/sofia.png";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Contact = ({ data, carrito, eliminarProducto, pedido }) => {
+
+  const router = useRouter();
+
+  const [send, setSentd] = useState(false)
+  const [email,setEmail] = ("")
+  const [subject,setSubject] = ("")
+  const [message,setMessage] = ("")
+
+  const [correo, SetCorreo] = useState({
+    email: "",
+    subject:"",
+    message:""
+  })
+
+
+  const onSubmit =() => {
+    setSentd(true)
+    setTimeout(() => {
+      setSentd(false)
+    },5000)
+    router.push('/contact');
+  }
+
   return (
     <>
       <Layout
@@ -22,6 +47,7 @@ const Contact = ({ data, carrito, eliminarProducto, pedido }) => {
             <form
               method="POST"
               action="http://localhost:3001/enviar-correo"
+              onSubmit={onSubmit}
               class="space-y-8"
             >
               <div>
@@ -80,6 +106,9 @@ const Contact = ({ data, carrito, eliminarProducto, pedido }) => {
                 </button>
               </div>
             </form>
+            {send && (
+              <p className="text-green-500 font-bold text-base font-abc">Correo enviado con exito!</p>
+            )}
           </div>
           <Image src={logo} className="w-[300px]" />
         </section>
